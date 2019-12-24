@@ -1,19 +1,19 @@
 package voiceService
 
-import "fmt"
+import (
+	"fmt"
 
-type VoicerIface interface {
-	ParseCommand()
-	ParseName()
-}
+	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+)
 
 type voicer interface {
 	ParseCommand()
 	ParseName()
 }
 
-type VoicerOpts struct {
-	Name string
+type VoicerIface interface {
+	ParseCommand()
+	ParseName()
 }
 
 type voicerService struct {
@@ -24,11 +24,12 @@ type voicerService struct {
 func (f *voicerService) ParseCommand() {
 	fmt.Println("парсинг команды")
 }
+
 func (f *voicerService) ParseName() {
 	fmt.Println("парсинг имени")
 }
 
-func NewVoicer(opt VoicerOpts) VoicerIface {
+func NewVoicer(opt models.VoicerOpts) VoicerIface {
 	return &voicerService{
 		Name: opt.Name,
 	}

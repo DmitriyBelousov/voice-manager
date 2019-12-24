@@ -1,21 +1,21 @@
 package findService
 
-import "fmt"
+import (
+	"fmt"
 
-type FinderIface interface {
-	OpenPhoneBook()
-	FindContact()
-	ClosePhoneBook()
-}
+	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+)
 
 type finder interface {
 	OpenPhoneBook()
-	FindContact()
+	FindContact() string
 	ClosePoneBook()
 }
 
-type FinderOpts struct {
-	Name string
+type FinderIface interface {
+	OpenPhoneBook()
+	FindContact() string
+	ClosePhoneBook()
 }
 
 type finderService struct {
@@ -26,15 +26,17 @@ type finderService struct {
 func (f *finderService) OpenPhoneBook() {
 	fmt.Println("открытие контактов")
 }
-func (f *finderService) FindContact() {
+
+func (f *finderService) FindContact() string {
 	fmt.Println("поиск контакта")
+	return "Vasya"
 }
 
 func (f *finderService) ClosePhoneBook() {
 	fmt.Println("закрытие контактов")
 }
 
-func NewFinder(opt FinderOpts) FinderIface {
+func NewFinder(opt models.FinderOpts) FinderIface {
 	return &finderService{
 		Name: opt.Name,
 	}

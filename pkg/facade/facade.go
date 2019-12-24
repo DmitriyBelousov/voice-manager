@@ -1,14 +1,8 @@
 package facade
 
-type manager struct {
-	finder finder
-	caller caller
-	voicer voicer
-}
-
 type finder interface {
 	OpenPhoneBook()
-	FindContact()
+	FindContact() string
 	ClosePhoneBook()
 }
 
@@ -22,6 +16,17 @@ type voicer interface {
 	ParseName()
 }
 
+type VoiceManager interface {
+	Start()
+	Stop()
+}
+
+type manager struct {
+	finder finder
+	caller caller
+	voicer voicer
+}
+
 func (m *manager) Start() {
 	m.voicer.ParseCommand()
 	m.voicer.ParseName()
@@ -31,14 +36,10 @@ func (m *manager) Start() {
 
 	m.caller.MakeCall()
 }
+
 func (m *manager) Stop() {
 	m.caller.CancelCall()
 	m.finder.ClosePhoneBook()
-}
-
-type VoiceManager interface {
-	Start()
-	Stop()
 }
 
 func NewManager(f finder, c caller, v voicer) VoiceManager {

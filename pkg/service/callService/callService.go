@@ -1,6 +1,10 @@
 package callService
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+)
 
 type caller interface {
 	MakeCall()
@@ -10,10 +14,6 @@ type caller interface {
 type CallerIface interface {
 	MakeCall()
 	CancelCall()
-}
-
-type CallerOpts struct {
-	Name string
 }
 
 type callerService struct {
@@ -28,7 +28,7 @@ func (f *callerService) CancelCall() {
 	fmt.Println("завершаем звонок")
 }
 
-func NewCaller(opt CallerOpts) CallerIface {
+func NewCaller(opt models.CallerOpts) CallerIface {
 	return &callerService{
 		Name: opt.Name,
 	}
