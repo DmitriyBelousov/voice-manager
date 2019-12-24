@@ -4,7 +4,7 @@ import "fmt"
 
 type FinderIface interface {
 	OpenPhoneBook()
-	FindContact()
+	FindContact() string
 	ClosePhoneBook()
 }
 
@@ -14,8 +14,9 @@ func (c *finder) OpenPhoneBook() {
 	fmt.Println("открываю телефонную книгу")
 }
 
-func (c *finder) FindContact() {
+func (c *finder) FindContact() string {
 	fmt.Println("ищу контакт")
+	return "Vasya"
 }
 
 func (c *finder) ClosePhoneBook() {

@@ -8,7 +8,7 @@ type manager struct {
 
 type finder interface {
 	OpenPhoneBook()
-	FindContact()
+	FindContact() string
 	ClosePhoneBook()
 }
 
