@@ -4,13 +4,13 @@ import "fmt"
 
 type FinderIface interface {
 	OpenPhoneBook()
-	FindContact()
+	FindContact() string
 	ClosePhoneBook()
 }
 
 type finder interface {
 	OpenPhoneBook()
-	FindContact()
+	FindContact() string
 	ClosePoneBook()
 }
 
@@ -26,8 +26,9 @@ type finderService struct {
 func (f *finderService) OpenPhoneBook() {
 	fmt.Println("открытие контактов")
 }
-func (f *finderService) FindContact() {
+func (f *finderService) FindContact() string {
 	fmt.Println("поиск контакта")
+	return "Vasya"
 }
 
 func (f *finderService) ClosePhoneBook() {
