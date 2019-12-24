@@ -1,4 +1,4 @@
-package service
+package voiceService
 
 import "fmt"
 
@@ -28,9 +28,8 @@ func (f *voicerService) ParseName() {
 	fmt.Println("парсинг имени")
 }
 
-func NewVoicer(opt VoicerOpts, v voicer) VoicerIface {
+func NewVoicer(opt VoicerOpts) VoicerIface {
 	return &voicerService{
-		Name:   opt.Name,
-		voicer: v,
+		Name: opt.Name,
 	}
 }

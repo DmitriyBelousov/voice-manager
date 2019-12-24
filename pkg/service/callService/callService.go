@@ -1,4 +1,4 @@
-package service
+package callService
 
 import "fmt"
 
@@ -28,9 +28,8 @@ func (f *callerService) CancelCall() {
 	fmt.Println("завершаем звонок")
 }
 
-func NewCaller(opt CallerOpts, c caller) CallerIface {
+func NewCaller(opt CallerOpts) CallerIface {
 	return &callerService{
-		Name:   opt.Name,
-		caller: c,
+		Name: opt.Name,
 	}
 }

@@ -1,13 +1,25 @@
 package facade
 
-import (
-	"github.com/DmitriyBelousov/voice-manager/pkg/service"
-)
-
 type manager struct {
-	finder service.Finder
-	caller service.Caller
-	voicer service.Voicer
+	finder finder
+	caller caller
+	voicer voicer
+}
+
+type finder interface {
+	OpenPhoneBook()
+	FindContact()
+	ClosePhoneBook()
+}
+
+type caller interface {
+	MakeCall()
+	CancelCall()
+}
+
+type voicer interface {
+	ParseCommand()
+	ParseName()
 }
 
 func (m *manager) Start() {
@@ -21,7 +33,7 @@ func (m *manager) Start() {
 }
 func (m *manager) Stop() {
 	m.caller.CancelCall()
-	m.finder.ClosePoneBook()
+	m.finder.ClosePhoneBook()
 }
 
 type VoiceManager interface {
@@ -29,7 +41,7 @@ type VoiceManager interface {
 	Stop()
 }
 
-func NewManager(f service.Finder, c service.Caller, v service.Voicer) VoiceManager {
+func NewManager(f finder, c caller, v voicer) VoiceManager {
 	return &manager{
 		finder: f,
 		caller: c,

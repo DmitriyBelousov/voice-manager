@@ -1,11 +1,11 @@
-package service
+package findService
 
 import "fmt"
 
 type FinderIface interface {
 	OpenPhoneBook()
 	FindContact()
-	ClosePoneBook()
+	ClosePhoneBook()
 }
 
 type finder interface {
@@ -30,13 +30,12 @@ func (f *finderService) FindContact() {
 	fmt.Println("поиск контакта")
 }
 
-func (f *finderService) ClosePoneBook() {
+func (f *finderService) ClosePhoneBook() {
 	fmt.Println("закрытие контактов")
 }
 
-func NewFinder(opt FinderOpts, f finder) FinderIface {
+func NewFinder(opt FinderOpts) FinderIface {
 	return &finderService{
-		Name:   opt.Name,
-		finder: f,
+		Name: opt.Name,
 	}
 }
