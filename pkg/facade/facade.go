@@ -1,9 +1,15 @@
-package voiceManager
+package facade
+
+import (
+	"github.com/DmitriyBelousov/voice-manager/pkg/caller"
+	"github.com/DmitriyBelousov/voice-manager/pkg/finder"
+	"github.com/DmitriyBelousov/voice-manager/pkg/voicer"
+)
 
 type manager struct {
-	finder Finder
-	caller Caller
-	voicer Voicer
+	finder finder.Finder
+	caller caller.Caller
+	voicer voicer.Voicer
 }
 
 func (m *manager) Start() {
@@ -26,7 +32,7 @@ type VoiceManager interface {
 }
 
 //New factory func
-func NewManager(f Finder, c Caller, v Voicer) VoiceManager {
+func NewManager(f finder.Finder, c caller.Caller, v voicer.Voicer) VoiceManager {
 	return &manager{
 		finder: f,
 		caller: c,

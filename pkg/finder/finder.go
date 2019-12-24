@@ -1,4 +1,4 @@
-package voiceManager
+package finder
 
 import "fmt"
 
