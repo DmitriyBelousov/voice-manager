@@ -3,14 +3,12 @@ package user
 import (
 	"fmt"
 
-	vm "github.com/DmitriyBelousov/voice-manager/internal/voiceManager"
+	"github.com/DmitriyBelousov/voice-manager/pkg/facade"
 )
-
-var facade vm.VoiceManager
 
 //User ...
 type user struct {
-	voiceManager vm.VoiceManager
+	voiceManager facade.VoiceManager
 }
 
 type User interface {
@@ -19,7 +17,7 @@ type User interface {
 }
 
 //New ...
-func NewUser(manager vm.VoiceManager) User {
+func NewUser(manager facade.VoiceManager) User {
 	return &user{
 		voiceManager: manager,
 	}
