@@ -1,48 +1,35 @@
 package voiceManager
 
-import "fmt"
-
-type VoiceManager interface{
-	Start()
-	Stop()
-	Close()
-}
-
-//VoiceClient ...
-type VoiceClient struct{
+type manager struct {
 	finder Finder
 	caller Caller
 	voicer Voicer
 }
 
-//Start ...
-func (vc *VoiceClient) Start(){
-	vc.voicer.ParseCommand()
-	vc.voicer.ParseName()
+func (m *manager) Start() {
+	m.voicer.ParseCommand()
+	m.voicer.ParseName()
 
-	vc.finder.OpenPhoneBook()
-	defer 	vc.finder.ClosePoneBook()
-	vc.finder.FindContact()
+	m.finder.OpenPhoneBook()
+	m.finder.FindContact()
 
-	vc.caller.MakeCall()
-	vc.Close()
+	m.caller.MakeCall()
+}
+func (m *manager) Stop() {
+	m.caller.CancelCall()
+	m.finder.ClosePoneBook()
 }
 
-///Stop ...
-func (vc *VoiceClient) Stop(){
-	vc.caller.CancelCall()
-}
-
-//Close ...
-func (vc *VoiceClient) Close(){
-	fmt.Println("Закрытие голосового менеджера")
+type VoiceManager interface {
+	Start()
+	Stop()
 }
 
 //New factory func
-func New(f Finder, c Caller, v Voicer) VoiceClient{
-	return VoiceClient{
-		caller: c,
+func NewManager(f Finder, c Caller, v Voicer) VoiceManager {
+	return &manager{
 		finder: f,
+		caller: c,
 		voicer: v,
 	}
 }
