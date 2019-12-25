@@ -2,8 +2,8 @@ package voicer
 
 import "fmt"
 
-//VoicerIface ...
-type VoicerIface interface {
+//MobileVoicer ...
+type MobileVoicer interface {
 	ParseCommand()
 	ParseName()
 }
@@ -21,6 +21,6 @@ func (c *voicer) ParseName() {
 }
 
 //NewVoicer ...
-func NewVoicer() VoicerIface {
+func NewVoicer() MobileVoicer {
 	return &voicer{}
 }

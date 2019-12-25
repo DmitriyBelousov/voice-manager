@@ -2,8 +2,8 @@ package caller
 
 import "fmt"
 
-//CallerIface ...
-type CallerIface interface {
+//MobileCaller ...
+type MobileCaller interface {
 	MakeCall()
 	CancelCall()
 }
@@ -21,6 +21,6 @@ func (c *caller) CancelCall() {
 }
 
 //NewCaller ...
-func NewCaller() CallerIface {
+func NewCaller() MobileCaller {
 	return &caller{}
 }

@@ -2,8 +2,8 @@ package finder
 
 import "fmt"
 
-//FinderIface ...
-type FinderIface interface {
+//MobileFinder ...
+type MobileFinder interface {
 	OpenPhoneBook()
 	FindContact() string
 	ClosePhoneBook()
@@ -28,6 +28,6 @@ func (c *finder) ClosePhoneBook() {
 }
 
 //NewFinder ...
-func NewFinder() FinderIface {
+func NewFinder() MobileFinder {
 	return &finder{}
 }
