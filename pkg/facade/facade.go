@@ -16,6 +16,7 @@ type voicer interface {
 	ParseName()
 }
 
+//VoiceManager ...
 type VoiceManager interface {
 	Start()
 	Stop()
@@ -27,6 +28,7 @@ type manager struct {
 	voicer voicer
 }
 
+//Start make call action
 func (m *manager) Start() {
 	m.voicer.ParseCommand()
 	m.voicer.ParseName()
@@ -37,15 +39,17 @@ func (m *manager) Start() {
 	m.caller.MakeCall()
 }
 
+//Finish call action
 func (m *manager) Stop() {
 	m.caller.CancelCall()
 	m.finder.ClosePhoneBook()
 }
 
-func NewManager(f finder, c caller, v voicer) VoiceManager {
+//NewManager ...
+func NewManager(finder finder, caller caller, voicer voicer) VoiceManager {
 	return &manager{
-		finder: f,
-		caller: c,
-		voicer: v,
+		finder: finder,
+		caller: caller,
+		voicer: voicer,
 	}
 }
