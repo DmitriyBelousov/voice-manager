@@ -1,20 +1,31 @@
 package facade
 
-import (
-	"testing"
+import "testing"
 
-	"github.com/DmitriyBelousov/voice-manager/pkg/models"
-	"github.com/DmitriyBelousov/voice-manager/pkg/service/callService"
-	"github.com/DmitriyBelousov/voice-manager/pkg/service/findService"
-	"github.com/DmitriyBelousov/voice-manager/pkg/service/voiceService"
-)
+type mockFinder struct {
+}
+type mockCaller struct {
+}
+type mockVoicer struct {
+}
+
+func (mf *mockFinder) OpenPhoneBook()      {}
+func (mf *mockFinder) FindContact() string { return "" }
+func (mf *mockFinder) ClosePhoneBook()     {}
+
+func (mc *mockCaller) MakeCall()   {}
+func (mc *mockCaller) CancelCall() {}
+
+func (mv *mockVoicer) ParseCommand() {}
+func (mv *mockVoicer) ParseName()    {}
 
 func Test_facade_NewManager(t *testing.T) {
-	finder := findService.NewFinder(models.FinderOpts{Name: "name"})
-	voicer := voiceService.NewVoicer(models.VoicerOpts{Name: "name"})
-	caller := callService.NewCaller(models.CallerOpts{Name: "name"})
 
-	manager := NewManager(finder, caller, voicer)
+	f := new(mockFinder)
+	c := new(mockCaller)
+	v := new(mockVoicer)
+
+	manager := NewManager(f, c, v)
 	if _, ok := manager.(VoiceManager); !ok {
 		t.Error("unexpected type")
 	}

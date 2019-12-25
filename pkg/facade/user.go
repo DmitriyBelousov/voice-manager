@@ -1,9 +1,7 @@
-package user
+package facade
 
 import (
 	"fmt"
-
-	"github.com/DmitriyBelousov/voice-manager/pkg/facade"
 )
 
 //User ...
@@ -13,7 +11,7 @@ type User interface {
 }
 
 type user struct {
-	voiceManager facade.VoiceManager
+	voiceManager VoiceManager
 }
 
 //UseVoiceManager facade usage
@@ -32,7 +30,7 @@ func (u *user) Sleep() {
 }
 
 //NewUser ...
-func NewUser(manager facade.VoiceManager) User {
+func NewUser(manager VoiceManager) User {
 	return &user{
 		voiceManager: manager,
 	}
