@@ -1,6 +1,10 @@
 package facade
 
-import "testing"
+import (
+	"testing"
+
+	"git.wildberries.ru/portals/feedback-service/_vendor-20191224161050/github.com/stretchr/testify/assert"
+)
 
 type mockFinder struct {
 }
@@ -26,7 +30,7 @@ func Test_facade_NewManager(t *testing.T) {
 	v := new(mockVoicer)
 
 	manager := NewManager(f, c, v)
-	if _, ok := manager.(VoiceManager); !ok {
-		t.Error("unexpected type")
-	}
+	_, ok := manager.(VoiceManager)
+	assert.Equal(t, true, ok)
+
 }

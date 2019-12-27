@@ -3,7 +3,7 @@ package findService
 import (
 	"fmt"
 
-	voice_manager "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
+	models "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
 )
 
 type finder interface {
@@ -12,37 +12,37 @@ type finder interface {
 	ClosePoneBook()
 }
 
-//FinderIface ...
-type FinderIface interface {
+// MobileFinder ...
+type MobileFinder interface {
 	OpenPhoneBook()
 	FindContact() string
 	ClosePhoneBook()
 }
 
 type finderService struct {
-	Name   string
+	name   string
 	finder finder
 }
 
-//OpenPhoneBook open phone contacts
+// OpenPhoneBook open phone contacts
 func (f *finderService) OpenPhoneBook() {
 	fmt.Println("открытие контактов")
 }
 
-//FindContact find contact from voice command
+// FindContact find contact from voice command
 func (f *finderService) FindContact() string {
 	fmt.Println("поиск контакта")
 	return "Vasya"
 }
 
-//ClosePhoneBook close phone book
+// ClosePhoneBook close phone book
 func (f *finderService) ClosePhoneBook() {
 	fmt.Println("закрытие контактов")
 }
 
-//NewFinder ...
-func NewFinder(opt voice_manager.FinderOpts) FinderIface {
+// NewFinder ...
+func NewFinder(opt models.FinderOpts) MobileFinder {
 	return &finderService{
-		Name: opt.Name,
+		name: opt.Name,
 	}
 }

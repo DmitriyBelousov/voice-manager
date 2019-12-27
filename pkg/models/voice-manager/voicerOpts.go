@@ -1,6 +1,6 @@
 package voice_manager
 
-//VoicerOpts ...
+// VoicerOpts ...
 type VoicerOpts struct {
 	Name string
 }

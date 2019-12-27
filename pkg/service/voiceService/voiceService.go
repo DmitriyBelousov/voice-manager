@@ -3,7 +3,7 @@ package voiceService
 import (
 	"fmt"
 
-	voice_manager "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
+	models "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
 )
 
 type voicer interface {
@@ -11,30 +11,30 @@ type voicer interface {
 	ParseName()
 }
 
-//VoicerIface ...
+// VoicerIface ...
 type VoicerIface interface {
 	ParseCommand()
 	ParseName()
 }
 
 type voicerService struct {
-	Name   string
+	name   string
 	voicer voicer
 }
 
-//ParseCommand get action from voice command
+// ParseCommand get action from voice command
 func (f *voicerService) ParseCommand() {
 	fmt.Println("парсинг команды")
 }
 
-//ParseName get name param for command
+// ParseName get name param for command
 func (f *voicerService) ParseName() {
 	fmt.Println("парсинг имени")
 }
 
-//NewVoicer ...
-func NewVoicer(opt voice_manager.VoicerOpts) VoicerIface {
+// NewVoicer ...
+func NewVoicer(opt models.VoicerOpts) VoicerIface {
 	return &voicerService{
-		Name: opt.Name,
+		name: opt.Name,
 	}
 }

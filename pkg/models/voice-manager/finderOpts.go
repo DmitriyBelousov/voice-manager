@@ -1,6 +1,6 @@
 package voice_manager
 
-//FinderOpts ...
+// FinderOpts ...
 type FinderOpts struct {
 	Name string
 }
