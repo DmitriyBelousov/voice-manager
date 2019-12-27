@@ -18,7 +18,7 @@ type VoicerIface interface {
 }
 
 type voicerService struct {
-	Name   string
+	name   string
 	voicer voicer
 }
 
@@ -35,6 +35,6 @@ func (f *voicerService) ParseName() {
 // NewVoicer ...
 func NewVoicer(opt models.VoicerOpts) VoicerIface {
 	return &voicerService{
-		Name: opt.Name,
+		name: opt.Name,
 	}
 }

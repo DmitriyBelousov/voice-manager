@@ -14,7 +14,7 @@ func Test_findService_NewFinder(t *testing.T) {
 		t.Error(fmt.Sprintf("Expected - %s", name))
 	}
 
-	if _, ok := caller.(FinderIface); !ok {
+	if _, ok := caller.(MobileFinder); !ok {
 		t.Error("unexpected type")
 	}
 }

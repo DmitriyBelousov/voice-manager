@@ -11,14 +11,14 @@ type caller interface {
 	CancelCall()
 }
 
-// CallerIface ...
-type CallerIface interface {
+// MobileCaller ...
+type MobileCaller interface {
 	MakeCall()
 	CancelCall()
 }
 
 type callerService struct {
-	Name   string
+	name   string
 	caller caller
 }
 
@@ -33,8 +33,8 @@ func (f *callerService) CancelCall() {
 }
 
 // NewCaller ...
-func NewCaller(opt models.CallerOpts) CallerIface {
+func NewCaller(opt models.CallerOpts) MobileCaller {
 	return &callerService{
-		Name: opt.Name,
+		name: opt.Name,
 	}
 }

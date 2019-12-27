@@ -12,15 +12,15 @@ type finder interface {
 	ClosePoneBook()
 }
 
-// FinderIface ...
-type FinderIface interface {
+// MobileFinder ...
+type MobileFinder interface {
 	OpenPhoneBook()
 	FindContact() string
 	ClosePhoneBook()
 }
 
 type finderService struct {
-	Name   string
+	name   string
 	finder finder
 }
 
@@ -41,8 +41,8 @@ func (f *finderService) ClosePhoneBook() {
 }
 
 // NewFinder ...
-func NewFinder(opt models.FinderOpts) FinderIface {
+func NewFinder(opt models.FinderOpts) MobileFinder {
 	return &finderService{
-		Name: opt.Name,
+		name: opt.Name,
 	}
 }
