@@ -11,7 +11,7 @@ type caller interface {
 	CancelCall()
 }
 
-//CallerIface ...
+// CallerIface ...
 type CallerIface interface {
 	MakeCall()
 	CancelCall()
@@ -22,17 +22,17 @@ type callerService struct {
 	caller caller
 }
 
-//MakeCall do call
+// MakeCall do call
 func (f *callerService) MakeCall() {
 	fmt.Println("делаем звонок")
 }
 
-//CancelCall cancel call
+// CancelCall cancel call
 func (f *callerService) CancelCall() {
 	fmt.Println("завершаем звонок")
 }
 
-//NewCaller ...
+// NewCaller ...
 func NewCaller(opt models.CallerOpts) CallerIface {
 	return &callerService{
 		Name: opt.Name,

@@ -1,6 +1,6 @@
 package models
 
-//VoicerOpts ...
+// VoicerOpts ...
 type VoicerOpts struct {
 	Name string
 }

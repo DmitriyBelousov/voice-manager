@@ -12,7 +12,7 @@ type finder interface {
 	ClosePoneBook()
 }
 
-//FinderIface ...
+// FinderIface ...
 type FinderIface interface {
 	OpenPhoneBook()
 	FindContact() string
@@ -24,23 +24,23 @@ type finderService struct {
 	finder finder
 }
 
-//OpenPhoneBook open phone contacts
+// OpenPhoneBook open phone contacts
 func (f *finderService) OpenPhoneBook() {
 	fmt.Println("открытие контактов")
 }
 
-//FindContact find contact from voice command
+// FindContact find contact from voice command
 func (f *finderService) FindContact() string {
 	fmt.Println("поиск контакта")
 	return "Vasya"
 }
 
-//ClosePhoneBook close phone book
+// ClosePhoneBook close phone book
 func (f *finderService) ClosePhoneBook() {
 	fmt.Println("закрытие контактов")
 }
 
-//NewFinder ...
+// NewFinder ...
 func NewFinder(opt models.FinderOpts) FinderIface {
 	return &finderService{
 		Name: opt.Name,

@@ -2,7 +2,7 @@ package voicer
 
 import "fmt"
 
-//MobileVoicer ...
+// MobileVoicer ...
 type MobileVoicer interface {
 	ParseCommand()
 	ParseName()
@@ -10,17 +10,17 @@ type MobileVoicer interface {
 
 type voicer struct{}
 
-//ParseCommand get action from voice command
+// ParseCommand get action from voice command
 func (c *voicer) ParseCommand() {
 	fmt.Println("распознаю команду")
 }
 
-//ParseName get name param for command
+// ParseName get name param for command
 func (c *voicer) ParseName() {
 	fmt.Println("распознаю имя")
 }
 
-//NewVoicer ...
+// NewVoicer ...
 func NewVoicer() MobileVoicer {
 	return &voicer{}
 }

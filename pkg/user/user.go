@@ -1,20 +1,25 @@
-package facade
+package user
 
 import (
 	"fmt"
 )
 
-//User ...
+type voiceManager interface {
+	Start()
+	Stop()
+}
+
+// User ...
 type User interface {
 	UseVoiceManager()
 	Sleep()
 }
 
 type user struct {
-	voiceManager VoiceManager
+	voiceManager voiceManager
 }
 
-//UseVoiceManager facade usage
+// UseVoiceManager facade usage
 func (u *user) UseVoiceManager() {
 	fmt.Println("Достал телефон")
 
@@ -24,13 +29,13 @@ func (u *user) UseVoiceManager() {
 	fmt.Println("Убрал телефон")
 }
 
-//Sleep ...
+// Sleep ...
 func (u *user) Sleep() {
 	fmt.Println("Ушел спать")
 }
 
-//NewUser ...
-func NewUser(manager VoiceManager) User {
+// NewUser ...
+func NewUser(manager voiceManager) User {
 	return &user{
 		voiceManager: manager,
 	}

@@ -1,6 +1,6 @@
 package models
 
-//FinderOpts ...
+// FinderOpts ...
 type FinderOpts struct {
 	Name string
 }

@@ -1,6 +1,6 @@
 package models
 
-//CallerOpts ...
+// CallerOpts ...
 type CallerOpts struct {
 	Name string
 }
