@@ -2,36 +2,45 @@ package coffeeMaker
 
 import (
 	"fmt"
-	"strings"
+
+	models "github.com/DmitriyBelousov/voice-manager/pkg/models/coffeeMaker"
 )
 
-type Coffee struct {
-	Composition strings.Builder
-}
-
-type CoffeeMaker interface {
+type coffeeMaker interface {
 	SetWater()
 	SetCoffee()
 	SetAdditives()
-	GetProduct() Coffee
+	GetProduct() models.Coffee
 }
 
-type CoffeeMachine struct {
-	maker CoffeeMaker
+type CoffeeMachine interface {
+	SetBuilder(coffeeMaker)
+	Make() models.Coffee
+	Taste()
 }
 
-func (d *CoffeeMachine) SetBuilder(cm CoffeeMaker) {
+type coffeeMachine struct {
+	maker coffeeMaker
+}
+
+func (d *coffeeMachine) SetBuilder(cm coffeeMaker) {
 	d.maker = cm
 }
 
-func (d *CoffeeMachine) Make() Coffee {
+func (d *coffeeMachine) Make() models.Coffee {
 	d.maker.SetWater()
 	d.maker.SetCoffee()
 	d.maker.SetAdditives()
 	return d.maker.GetProduct()
 }
 
-func (d *CoffeeMachine) Taste() {
+func (d *coffeeMachine) Taste() {
 	coffee := d.maker.GetProduct()
 	fmt.Println(coffee.Composition.String())
+}
+
+func NewCoffeeMachine(cm coffeeMaker) CoffeeMachine {
+	return &coffeeMachine{
+		maker: cm,
+	}
 }

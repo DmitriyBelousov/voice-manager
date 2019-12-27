@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+	voice_manager "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
 )
 
 func Test_findService_NewFinder(t *testing.T) {
 	name := "Vasya"
-	caller := NewFinder(models.FinderOpts{Name: name})
+	caller := NewFinder(voice_manager.FinderOpts{Name: name})
 	if res := caller.FindContact(); res != name {
 		t.Error(fmt.Sprintf("Expected - %s", name))
 	}

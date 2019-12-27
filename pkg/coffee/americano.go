@@ -1,11 +1,11 @@
 package coffee
 
 import (
-	cm "github.com/DmitriyBelousov/voice-manager/pkg/coffeeMaker"
+	"github.com/DmitriyBelousov/voice-manager/pkg/models/coffeeMaker"
 )
 
 type Americano struct {
-	coffee cm.Coffee
+	coffee coffeeMaker.Coffee
 }
 
 func (b *Americano) SetWater() {
@@ -19,6 +19,6 @@ func (b *Americano) SetCoffee() {
 func (b *Americano) SetAdditives() {
 }
 
-func (b *Americano) GetProduct() cm.Coffee {
+func (b *Americano) GetProduct() coffeeMaker.Coffee {
 	return b.coffee
 }

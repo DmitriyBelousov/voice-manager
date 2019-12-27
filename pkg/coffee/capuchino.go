@@ -1,9 +1,11 @@
 package coffee
 
-import cm "github.com/DmitriyBelousov/voice-manager/pkg/coffeeMaker"
+import (
+	"github.com/DmitriyBelousov/voice-manager/pkg/models/coffeeMaker"
+)
 
 type Capuchino struct {
-	coffee cm.Coffee
+	coffee coffeeMaker.Coffee
 }
 
 func (b *Capuchino) SetWater() {
@@ -18,6 +20,6 @@ func (b *Capuchino) SetAdditives() {
 	b.coffee.Composition.WriteString("молоко")
 }
 
-func (b *Capuchino) GetProduct() cm.Coffee {
+func (b *Capuchino) GetProduct() coffeeMaker.Coffee {
 	return b.coffee
 }

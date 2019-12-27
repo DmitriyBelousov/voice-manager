@@ -3,7 +3,7 @@ package callService
 import (
 	"fmt"
 
-	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+	voice_manager "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
 )
 
 type caller interface {
@@ -33,7 +33,7 @@ func (f *callerService) CancelCall() {
 }
 
 //NewCaller ...
-func NewCaller(opt models.CallerOpts) CallerIface {
+func NewCaller(opt voice_manager.CallerOpts) CallerIface {
 	return &callerService{
 		Name: opt.Name,
 	}

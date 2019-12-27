@@ -3,7 +3,7 @@ package voiceService
 import (
 	"fmt"
 
-	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+	voice_manager "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
 )
 
 type voicer interface {
@@ -33,7 +33,7 @@ func (f *voicerService) ParseName() {
 }
 
 //NewVoicer ...
-func NewVoicer(opt models.VoicerOpts) VoicerIface {
+func NewVoicer(opt voice_manager.VoicerOpts) VoicerIface {
 	return &voicerService{
 		Name: opt.Name,
 	}

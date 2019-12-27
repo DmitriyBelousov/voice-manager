@@ -1,4 +1,4 @@
-package models
+package voice_manager
 
 //VoicerOpts ...
 type VoicerOpts struct {

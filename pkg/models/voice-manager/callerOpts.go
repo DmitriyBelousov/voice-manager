@@ -1,4 +1,4 @@
-package models
+package voice_manager
 
 //CallerOpts ...
 type CallerOpts struct {

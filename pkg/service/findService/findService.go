@@ -3,7 +3,7 @@ package findService
 import (
 	"fmt"
 
-	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+	voice_manager "github.com/DmitriyBelousov/voice-manager/pkg/models/voice-manager"
 )
 
 type finder interface {
@@ -41,7 +41,7 @@ func (f *finderService) ClosePhoneBook() {
 }
 
 //NewFinder ...
-func NewFinder(opt models.FinderOpts) FinderIface {
+func NewFinder(opt voice_manager.FinderOpts) FinderIface {
 	return &finderService{
 		Name: opt.Name,
 	}
