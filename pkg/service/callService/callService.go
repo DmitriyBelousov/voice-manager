@@ -7,13 +7,13 @@ import (
 )
 
 type caller interface {
-	MakeCall()
+	Call()
 	CancelCall()
 }
 
 // MobileCaller ...
 type MobileCaller interface {
-	MakeCall()
+	Call()
 	CancelCall()
 }
 
@@ -22,8 +22,8 @@ type callerService struct {
 	caller caller
 }
 
-// MakeCall do call
-func (f *callerService) MakeCall() {
+// Call do call
+func (f *callerService) Call() {
 	fmt.Println("делаем звонок")
 }
 

@@ -17,7 +17,7 @@ func (mf *mockFinder) OpenPhoneBook()      {}
 func (mf *mockFinder) FindContact() string { return "" }
 func (mf *mockFinder) ClosePhoneBook()     {}
 
-func (mc *mockCaller) MakeCall()   {}
+func (mc *mockCaller) Call()       {}
 func (mc *mockCaller) CancelCall() {}
 
 func (mv *mockVoicer) ParseCommand() {}
