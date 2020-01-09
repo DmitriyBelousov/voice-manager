@@ -16,6 +16,7 @@ func (this *drinkVisitor) visitEconomPassenger(ep *economPassenger) {
 	this.Drink = append(this.Drink, fmt.Sprintf("visit pass %s and give water \n", ep.Name))
 }
 
+// NewDrinkVisitor create new drink visitor
 func NewDrinkVisitor() *drinkVisitor {
 	return &drinkVisitor{}
 }
