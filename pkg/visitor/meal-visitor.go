@@ -5,15 +5,15 @@ import (
 )
 
 type mealVisitor struct {
-	Meal []string
+	GivenMeal []string
 }
 
 func (this *mealVisitor) visitBusinessPassenger(bp *businessPassenger) {
-	this.Meal = append(this.Meal, fmt.Sprintf("visit pass %s and give meat \n", bp.Name))
+	this.GivenMeal = append(this.GivenMeal, fmt.Sprintf("visit pass %s and give meat \n", bp.Name))
 }
 
 func (this *mealVisitor) visitEconomPassenger(ep *economPassenger) {
-	this.Meal = append(this.Meal, fmt.Sprintf("visit pass %s and give bread \n", ep.Name))
+	this.GivenMeal = append(this.GivenMeal, fmt.Sprintf("visit pass %s and give bread \n", ep.Name))
 }
 
 // NewMealVisitor create new meal visitor

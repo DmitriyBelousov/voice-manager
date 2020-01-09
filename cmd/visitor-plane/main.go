@@ -18,6 +18,6 @@ func main() {
 	barmen := visitor.NewDrinkVisitor()
 	list.Accept(barmen)
 
-	fmt.Println(foodStuart.Meal)
-	fmt.Println(barmen.Drink)
+	fmt.Println(foodStuart.GivenMeal)
+	fmt.Println(barmen.GivenDrink)
 }
