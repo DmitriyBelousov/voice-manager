@@ -11,8 +11,8 @@ type voicer interface {
 	ParseName()
 }
 
-// VoicerIface ...
-type VoicerIface interface {
+// Voicer ...
+type Voicer interface {
 	ParseCommand()
 	ParseName()
 }
@@ -33,7 +33,7 @@ func (f *voicerService) ParseName() {
 }
 
 // NewVoicer ...
-func NewVoicer(opt models.VoicerOpts) VoicerIface {
+func NewVoicer(opt models.VoicerOpts) Voicer {
 	return &voicerService{
 		name: opt.Name,
 	}

@@ -7,7 +7,7 @@ type finder interface {
 }
 
 type caller interface {
-	MakeCall()
+	Call()
 	CancelCall()
 }
 
@@ -36,10 +36,10 @@ func (m *manager) Start() {
 	m.finder.OpenPhoneBook()
 	m.finder.FindContact()
 
-	m.caller.MakeCall()
+	m.caller.Call()
 }
 
-// Finish call action
+// Stop finish call action
 func (m *manager) Stop() {
 	m.caller.CancelCall()
 	m.finder.ClosePhoneBook()

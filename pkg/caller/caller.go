@@ -4,14 +4,14 @@ import "fmt"
 
 // MobileCaller ...
 type MobileCaller interface {
-	MakeCall()
+	Call()
 	CancelCall()
 }
 
 type caller struct{}
 
-// MakeCall do call
-func (c *caller) MakeCall() {
+// Call do call
+func (c *caller) Call() {
 	fmt.Println("делаю звонок")
 }
 
