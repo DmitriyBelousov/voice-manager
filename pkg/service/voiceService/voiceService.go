@@ -8,13 +8,13 @@ import (
 
 type voicer interface {
 	ParseCommand()
-	ParseName()
+	ParseName(string) string
 }
 
 // Voicer ...
 type Voicer interface {
 	ParseCommand()
-	ParseName()
+	ParseName(string) string
 }
 
 type voicerService struct {
@@ -28,8 +28,10 @@ func (f *voicerService) ParseCommand() {
 }
 
 // ParseName get name param for command
-func (f *voicerService) ParseName() {
-	fmt.Println("парсинг имени")
+func (f *voicerService) ParseName(name string) string {
+	fmt.Printf("парсинг имени, ищу %s \n", name)
+
+	return name
 }
 
 // NewVoicer ...

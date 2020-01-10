@@ -7,13 +7,13 @@ import (
 )
 
 type caller interface {
-	Call()
+	Call(string)
 	CancelCall()
 }
 
 // MobileCaller ...
 type MobileCaller interface {
-	Call()
+	Call(string)
 	CancelCall()
 }
 
@@ -23,8 +23,8 @@ type callerService struct {
 }
 
 // Call do call
-func (f *callerService) Call() {
-	fmt.Println("делаем звонок")
+func (f *callerService) Call(number string) {
+	fmt.Printf("делаем звонок на номер %s \n", number)
 }
 
 // CancelCall cancel call

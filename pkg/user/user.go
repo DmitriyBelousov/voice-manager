@@ -5,13 +5,13 @@ import (
 )
 
 type voiceManager interface {
-	Start()
+	Start(string)
 	Stop()
 }
 
 // User ...
 type User interface {
-	UseVoiceManager()
+	UseVoiceManager(string)
 	Sleep()
 }
 
@@ -20,10 +20,10 @@ type user struct {
 }
 
 // UseVoiceManager facade usage
-func (u *user) UseVoiceManager() {
+func (u *user) UseVoiceManager(name string) {
 	fmt.Println("Достал телефон")
 
-	u.voiceManager.Start()
+	u.voiceManager.Start(name)
 	u.voiceManager.Stop()
 
 	fmt.Println("Убрал телефон")

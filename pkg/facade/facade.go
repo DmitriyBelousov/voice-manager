@@ -2,23 +2,23 @@ package facade
 
 type finder interface {
 	OpenPhoneBook()
-	FindContact() string
+	FindContact(string) string
 	ClosePhoneBook()
 }
 
 type caller interface {
-	Call()
+	Call(string)
 	CancelCall()
 }
 
 type voicer interface {
 	ParseCommand()
-	ParseName()
+	ParseName(string) string
 }
 
 // VoiceManager ...
 type VoiceManager interface {
-	Start()
+	Start(string)
 	Stop()
 }
 
@@ -29,14 +29,14 @@ type manager struct {
 }
 
 // Start make call action
-func (m *manager) Start() {
+func (m *manager) Start(name string) {
 	m.voicer.ParseCommand()
-	m.voicer.ParseName()
+	parsedName := m.voicer.ParseName(name)
 
 	m.finder.OpenPhoneBook()
-	m.finder.FindContact()
+	number := m.finder.FindContact(parsedName)
 
-	m.caller.Call()
+	m.caller.Call(number)
 }
 
 // Stop finish call action

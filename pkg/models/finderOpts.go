@@ -2,5 +2,5 @@ package models
 
 // FinderOpts ...
 type FinderOpts struct {
-	Name string
+	Contacts map[string]string
 }

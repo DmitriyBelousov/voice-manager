@@ -3,25 +3,26 @@ package findService
 import (
 	"fmt"
 
-	"github.com/DmitriyBelousov/voice-manager/pkg/models"
+	"github.com/pkg/errors"
 )
 
 type finder interface {
 	OpenPhoneBook()
-	FindContact() string
+	FindContact(string) string
 	ClosePoneBook()
 }
 
 // MobileFinder ...
 type MobileFinder interface {
 	OpenPhoneBook()
-	FindContact() string
+	FindContact(string) string
 	ClosePhoneBook()
 }
 
 type finderService struct {
-	name   string
-	finder finder
+	name     string
+	finder   finder
+	contacts map[string]string
 }
 
 // OpenPhoneBook open phone contacts
@@ -30,9 +31,10 @@ func (f *finderService) OpenPhoneBook() {
 }
 
 // FindContact find contact from voice command
-func (f *finderService) FindContact() string {
-	fmt.Println("поиск контакта")
-	return "Vasya"
+func (f *finderService) FindContact(name string) string {
+	fmt.Printf("поиск контакта, ищем в телефонной книге %s \n", name)
+
+	return f.contacts[name]
 }
 
 // ClosePhoneBook close phone book
@@ -41,8 +43,9 @@ func (f *finderService) ClosePhoneBook() {
 }
 
 // NewFinder ...
-func NewFinder(opt models.FinderOpts) MobileFinder {
-	return &finderService{
-		name: opt.Name,
+func NewFinder(cntcs map[string]string) (MobileFinder, error) {
+	if cntcs != nil {
+		return &finderService{contacts: cntcs}, nil
 	}
+	return nil, errors.New("create contact list from not initialized map")
 }
